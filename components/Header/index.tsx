@@ -1,6 +1,21 @@
+import { useEffect, useState } from "react";
+import { AsyncPaginate } from "react-select-async-paginate";
+import loadOptions from "../../utils/search";
 import { CityInfo, Header, Search } from "./header.styles";
 
+type Test = { value: string; label: string };
+
 const HeaderComponent = () => {
+  const [inputValue, setInputValue] = useState<Test>({ label: "", value: "" });
+
+  const handleOnChange = async (searchData: Test) => {
+    setInputValue(searchData);
+  };
+
+  useEffect(() => {
+    console.log({ inputValue });
+  }, [inputValue]);
+
   return (
     <Header>
       <CityInfo>
@@ -10,7 +25,13 @@ const HeaderComponent = () => {
       </CityInfo>
 
       <Search>
-        <input type="text" placeholder="Enter yout location" />
+        <AsyncPaginate
+          debounceTimeout={1000}
+          value={inputValue}
+          loadOptions={loadOptions}
+          id="uniqueSearch"
+          onChange={handleOnChange}
+        />
       </Search>
     </Header>
   );

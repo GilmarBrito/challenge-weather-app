@@ -17,8 +17,13 @@ export const CityInfo = styled.div`
 `;
 
 export const Search = styled.div`
-  padding: 12px;
+  padding: 10px 20px;
   display: flex;
   align-items: flex-end;
   justify-content: end;
+  width: 100%;
+
+  #uniqueSearch {
+    width: 70%;
+  }
 `;
