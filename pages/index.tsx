@@ -8,9 +8,7 @@ const Home: NextPage = () => {
     <>
       <GlobalStyle />
       <Header />
-      <MainContainer>
-        <div>content</div>
-      </MainContainer>
+      <MainContainer />
       <footer>footer</footer>
     </>
   );
