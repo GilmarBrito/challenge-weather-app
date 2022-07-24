@@ -1,35 +1,46 @@
 import { useEffect, useState } from "react";
 import { AsyncPaginate } from "react-select-async-paginate";
 import { useCity } from "../../hooks/useCity";
+import { useFavorite } from "../../hooks/useFavorite";
 import { CurrentCity } from "../../models/City";
 import loadOptions from "../../utils/search";
 import { CityInfo, Header, Search } from "./header.styles";
-const initialInputValue = {
-  label: "",
-  value: "",
-};
-const HeaderComponent = () => {
-  const [inputValue, setInputValue] = useState<CurrentCity>(initialInputValue);
 
-  const { setCurrentCity } = useCity();
+const HeaderComponent = () => {
+  const { setCurrentCity, currentCity } = useCity();
+  const { favorites, toggleFavoriteItem } = useFavorite();
+  const [inputValue, setInputValue] = useState<CurrentCity>(currentCity);
 
   const handleOnChange = async (searchData: CurrentCity) => {
-    console.log(searchData);
-
     setInputValue(searchData);
+  };
+
+  const toggleFavorite = () => {
+    toggleFavoriteItem(currentCity);
   };
 
   useEffect(() => {
     setCurrentCity(inputValue);
   }, [inputValue]);
 
+  useEffect(() => {
+    console.log(favorites);
+  }, [favorites]);
+
+  const isOnFavorite = favorites.some((fav) => fav.label === currentCity.label);
+
   return (
     <Header>
-      <CityInfo>
-        <h2>Porto</h2>
-        <p>Portugal</p>
-        <p>Monday, 12 July 2022 08:00</p>
-      </CityInfo>
+      {currentCity.label && (
+        <CityInfo>
+          {currentCity.label.split(", ").map((item) => (
+            <p key={item}>{item}</p>
+          ))}
+          <button onClick={toggleFavorite}>{`${
+            isOnFavorite ? "Remove From" : "Add To"
+          } Favorite`}</button>
+        </CityInfo>
+      )}
 
       <Search>
         <AsyncPaginate
@@ -37,6 +48,7 @@ const HeaderComponent = () => {
           value={inputValue}
           loadOptions={loadOptions}
           id="uniqueSearch"
+          // @ts-ignore comment
           onChange={handleOnChange}
         />
       </Search>

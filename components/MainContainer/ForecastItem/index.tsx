@@ -1,13 +1,19 @@
+import { Daily } from "../../../models/WeatherDbResponse";
+import { getIcon } from "../../../utils/icon";
 import * as S from "./forecastItem.styles";
 
-export type ForecastItemProps = { currentDay?: boolean };
+export type ForecastItemProps = { item: Daily };
 
-const ForecastItem = ({ currentDay }: ForecastItemProps) => {
+const ForecastItem = ({ item }: ForecastItemProps) => {
   return (
-    <S.DaysDetails currentDay={currentDay}>
-      <span>Wednesday</span>
-      <div className="image"></div>
-      <span className="forecastTemperature">23C</span>
+    <S.DaysDetails>
+      <span>
+        {new Date(item.dt * 1000).toLocaleDateString("en-EN", {
+          weekday: "long",
+        })}
+      </span>
+      <img src={getIcon(item.weather[0].icon)} width={80} height={80}></img>
+      <span className="forecastTemperature">{item.temp.day} C</span>
     </S.DaysDetails>
   );
 };

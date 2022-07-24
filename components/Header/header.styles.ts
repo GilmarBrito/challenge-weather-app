@@ -8,8 +8,8 @@ export const Header = styled.header`
 export const CityInfo = styled.div`
   padding: 12px;
 
-  h2 {
-    margin: 0;
+  & > p:first-child {
+    font-size: 24px;
   }
   p {
     margin: 4px;

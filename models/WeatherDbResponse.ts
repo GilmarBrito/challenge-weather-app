@@ -44,7 +44,7 @@ interface FeelsLike {
   morn: number;
 }
 
-interface Daily {
+export interface Daily {
   dt: number;
   sunrise: number;
   sunset: number;

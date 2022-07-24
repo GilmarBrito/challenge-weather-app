@@ -16,7 +16,9 @@ const WeatherProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [currentWeather, setCurrentWeather] =
-    useState<WeatherDbResponse | null>(null);
+    useState<WeatherDbResponse | null>(() => {
+      return null;
+    });
 
   return (
     <WeatherContext.Provider value={{ currentWeather, setCurrentWeather }}>

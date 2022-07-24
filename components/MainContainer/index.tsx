@@ -2,21 +2,13 @@ import { useEffect } from "react";
 import { getWeather } from "../../api/weatherApi";
 import { useCity } from "../../hooks/useCity";
 import { useWeather } from "../../hooks/useWeather";
-import { DailyDetailsInfoProps } from "../../models/DailyDetailsInfo";
 import { GetWeatherProps } from "../../models/WeatherDbResponse";
+import { getIcon } from "../../utils/icon";
 import DailyDetailsInfo from "./DailyDetailsInfo";
 import ForecastItem from "./ForecastItem";
 import * as S from "./mainContainer.styles";
 
 const MainContainer = () => {
-  const detailsInfo: DailyDetailsInfoProps[] = [
-    { value: "0.01%", description: "Rain" },
-    { value: "0.02%", description: "Cloudy" },
-    { value: "0.03%", description: "Sunny" },
-    { value: "0.04%", description: "Rain" },
-    { value: "0.05%", description: "Partial" },
-  ];
-
   const { currentCity } = useCity();
   const { setCurrentWeather, currentWeather } = useWeather();
 
@@ -36,10 +28,8 @@ const MainContainer = () => {
 
       getWeatherData({ lat: Number(lat), lon: Number(lon) });
     }
-  }, [currentCity]);
+  }, [currentCity.value]);
 
-  const getIcon = (icon: string) =>
-    `http://openweathermap.org/img/w/${icon}.png`;
   return (
     <S.Main>
       {currentWeather && (
@@ -81,13 +71,9 @@ const MainContainer = () => {
           <S.ForecastList>
             <h2>Days</h2>
             <div>
-              <ForecastItem />
-              <ForecastItem currentDay />
-              <ForecastItem />
-              <ForecastItem />
-              <ForecastItem />
-              <ForecastItem />
-              <ForecastItem />
+              {currentWeather.daily.map((item) => (
+                <ForecastItem key={item.dt} item={item} />
+              ))}
             </div>
           </S.ForecastList>
         </>
