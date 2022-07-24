@@ -6,7 +6,7 @@ const HeaderComponent = () => {
       <CityInfo>
         <h2>Porto</h2>
         <p>Portugal</p>
-        <p className="date">Monday, 12 July 2022 08:00</p>
+        <p>Monday, 12 July 2022 08:00</p>
       </CityInfo>
 
       <Search>

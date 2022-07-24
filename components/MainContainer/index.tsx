@@ -5,11 +5,11 @@ import * as S from "./mainContainer.styles";
 
 const MainContainer = () => {
   const detailsInfo: DailyDetailsInfoProps[] = [
-    { value: "0.00%", description: "Rain" },
-    { value: "0.00%", description: "Cloudy" },
-    { value: "0.00%", description: "Sunny" },
-    { value: "0.00%", description: "Rain" },
-    { value: "0.00%", description: "Partial" },
+    { value: "0.01%", description: "Rain" },
+    { value: "0.02%", description: "Cloudy" },
+    { value: "0.03%", description: "Sunny" },
+    { value: "0.04%", description: "Rain" },
+    { value: "0.05%", description: "Partial" },
   ];
 
   return (
@@ -24,7 +24,7 @@ const MainContainer = () => {
       </S.DailyInfo>
       <S.DailyDetails>
         {detailsInfo.map((detail) => (
-          <DailyDetailsInfo {...detail} />
+          <DailyDetailsInfo {...detail} key={detail.value} />
         ))}
       </S.DailyDetails>
       <S.ForecastList>

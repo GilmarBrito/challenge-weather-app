@@ -7,6 +7,7 @@ export const Header = styled.header`
 
 export const CityInfo = styled.div`
   padding: 12px;
+
   h2 {
     margin: 0;
   }
