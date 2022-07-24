@@ -1,7 +1,19 @@
 import type { NextPage } from "next";
+import Header from "../components/Header";
+import MainContainer from "../components/MainContainer";
+import GlobalStyle from "../styles/global";
 
 const Home: NextPage = () => {
-  return <div>teste</div>;
+  return (
+    <>
+      <GlobalStyle />
+      <Header />
+      <MainContainer>
+        <div>content</div>
+      </MainContainer>
+      <footer>footer</footer>
+    </>
+  );
 };
 
 export default Home;
