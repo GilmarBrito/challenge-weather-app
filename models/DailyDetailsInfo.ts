@@ -1,4 +1,4 @@
 export type DailyDetailsInfoProps = {
-  value: string;
-  description: string;
+  description: string | number;
+  value: string | number;
 };

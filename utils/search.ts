@@ -3,6 +3,12 @@ import { getGeoLocation } from "../api/geoApi";
 const options = [{ label: "label", value: "value" }];
 
 const loadOptions = async (namePrefix: string) => {
+  if (namePrefix.length === 0) {
+    return {
+      options: [],
+    };
+  }
+
   const response = await getGeoLocation({ namePrefix });
 
   if (!response) {

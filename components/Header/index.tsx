@@ -1,19 +1,26 @@
 import { useEffect, useState } from "react";
 import { AsyncPaginate } from "react-select-async-paginate";
+import { useCity } from "../../hooks/useCity";
+import { CurrentCity } from "../../models/City";
 import loadOptions from "../../utils/search";
 import { CityInfo, Header, Search } from "./header.styles";
-
-type Test = { value: string; label: string };
-
+const initialInputValue = {
+  label: "",
+  value: "",
+};
 const HeaderComponent = () => {
-  const [inputValue, setInputValue] = useState<Test>({ label: "", value: "" });
+  const [inputValue, setInputValue] = useState<CurrentCity>(initialInputValue);
 
-  const handleOnChange = async (searchData: Test) => {
+  const { setCurrentCity } = useCity();
+
+  const handleOnChange = async (searchData: CurrentCity) => {
+    console.log(searchData);
+
     setInputValue(searchData);
   };
 
   useEffect(() => {
-    console.log({ inputValue });
+    setCurrentCity(inputValue);
   }, [inputValue]);
 
   return (
