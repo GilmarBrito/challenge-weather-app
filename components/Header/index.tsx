@@ -33,9 +33,12 @@ const HeaderComponent = () => {
     <Header>
       {currentCity.label && (
         <CityInfo>
-          {currentCity.label.split(", ").map((item) => (
-            <p key={item}>{item}</p>
-          ))}
+          {currentCity.label.split(", ").map((item, idx) => {
+            if (idx >= 3) {
+              return;
+            }
+            return <p key={item}>{item}</p>;
+          })}
           <button onClick={toggleFavorite}>{`${
             isOnFavorite ? "Remove From" : "Add To"
           } Favorite`}</button>
