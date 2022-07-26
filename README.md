@@ -1,3 +1,8 @@
+In addition to the instructions below, I will email you the .env file with the personal APIs keys I used.
+
+Despite having installed the libraries to do tests, I had some configuration issues, which took a long time. So, deliberately, I preferred to deliver the project in the negotiated time, without completed tests.
+Probably if I had a few more hours to spare and on time, I would. I will take responsibility for that.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
