@@ -23,10 +23,6 @@ const HeaderComponent = () => {
     setCurrentCity(inputValue);
   }, [inputValue]);
 
-  useEffect(() => {
-    console.log(favorites);
-  }, [favorites]);
-
   const isOnFavorite = favorites.some((fav) => fav.label === currentCity.label);
 
   return (
@@ -47,10 +43,12 @@ const HeaderComponent = () => {
 
       <Search>
         <AsyncPaginate
+          id="uniqueSearch"
+          placeholder="Search for cities"
+          instanceId="uniqueSearch"
           debounceTimeout={1000}
           value={inputValue}
           loadOptions={loadOptions}
-          id="uniqueSearch"
           // @ts-ignore comment
           onChange={handleOnChange}
         />

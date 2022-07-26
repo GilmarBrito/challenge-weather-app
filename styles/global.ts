@@ -28,6 +28,16 @@ const GlobalStyle = createGlobalStyle`
         margin: 0;
         padding: 0;
     }
+
+    button {
+        max-width: 150px;
+        width: 100%;
+        height: 40px;
+        cursor: pointer;
+        border: none;
+        background-color: #3c91e6;
+        border-radius: 4px;
+    }
 `;
 
 export default GlobalStyle;
