@@ -12,7 +12,10 @@ const CityContext = createContext<CityContextData>({} as CityContextData);
 const CityProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [city, setCity] = useState<CurrentCity>({ label: "", value: "" });
+  const [city, setCity] = useState<CurrentCity>({
+    label: "",
+    value: "",
+  });
 
   const geoSuccess = async ({
     coords: { latitude, longitude },
