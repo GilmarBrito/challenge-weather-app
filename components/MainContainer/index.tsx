@@ -41,7 +41,7 @@ const MainContainer = () => {
               height={150}
             ></img>
             <div className="temperature">
-              <h2>{currentWeather.current.temp}C</h2>
+              <h2>{currentWeather.current.temp} &#8451;</h2>
               <p>Feels like {currentWeather.current.feels_like}</p>
               <span>{currentWeather.current.weather[0].description}</span>
             </div>
